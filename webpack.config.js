@@ -16,7 +16,6 @@ const BUILD_DIR   = resolve(__dirname, 'build'),
 
 module.exports = {
   entry:     [
-    'webpack-hot-middleware/client',
     'tether',
     'font-awesome-loader',
     bootstrapEntryPoints.dev,
@@ -74,7 +73,6 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
       'window.Tether': 'tether',
