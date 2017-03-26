@@ -1,4 +1,9 @@
 {
   "presets": [ "stage-0" ],
-  "plugins": [ "transform-exponentiation-operator" ]
+  "plugins": [
+    ["transform-react-jsx", {
+      "pragma": "html"
+    }],
+    "transform-exponentiation-operator"
+  ]
 }
