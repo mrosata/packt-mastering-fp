@@ -16,7 +16,7 @@
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-exponentiation-operator": "^6.22.0",
-    "babel-plugin-transform-react-jsx": "^6.22.0",
+    "babel-plugin-transform-react-jsx": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
@@ -30,6 +30,7 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.14.1",
     "url-loader": "^0.5.8",
+    "virtual-dom": "^2.1.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
   },

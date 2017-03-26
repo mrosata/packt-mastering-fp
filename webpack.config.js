@@ -2,6 +2,7 @@ const autoprefixer = require('autoprefixer'),
       webpack      = require('webpack'),
       path         = require('path');
 
+
 const {resolve} = path;
 
 const BUILD_DIR = resolve(__dirname, 'build'),
@@ -24,7 +25,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js']
   },
 
   module: {
