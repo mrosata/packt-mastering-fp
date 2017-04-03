@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack ./app/index.js build/bundle.js --progress --colors",
-    "serve": "webpack-dev-server --progress --colors",
+    "serve": "webpack-dev-server --progress --colors --hot",
+    "watch": "webpack --progress --colors --watch",
     "help": "webpack --help --color",
     "bower": "bower"
   },
@@ -16,12 +17,15 @@
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-exponentiation-operator": "^6.22.0",
-    "babel-plugin-transform-react-jsx": "^6.22.0",
+    "babel-plugin-transform-react-jsx": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "css-loader": "^0.27.3",
     "exports-loader": "^0.6.4",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.10.1",
+    "font-awesome-loader": "^1.0.2",
     "imports-loader": "^0.7.1",
     "node-sass": "^4.5.0",
     "postcss-loader": "^1.3.3",
@@ -29,12 +33,17 @@
     "resolve-url-loader": "^2.0.2",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.14.1",
+    "tether": "^1.4.0",
     "url-loader": "^0.5.8",
+    "virtual-dom": "^2.1.1",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0"
+    "webpack-dev-server": "^2.3.0",
+    "webpack-hot-middleware": "^2.17.1"
   },
   "dependencies": {
     "bootstrap-loader": "^2.0.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
     "ramda": "^0.23.0"
   },
   "repository": {

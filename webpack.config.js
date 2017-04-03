@@ -4,16 +4,29 @@ const autoprefixer = require('autoprefixer'),
 
 const {resolve} = path;
 
-const BUILD_DIR = resolve(__dirname, 'build'),
-      APP_DIR   = resolve(__dirname, 'app'),
-      HOST_NAME = '0.0.0.0', // <-- note this will be on local network
-      PORT      = 5000;
+const bootstrapEntryPoints = require('./webpack.bootstrap.config.js');
+
+
+const BUILD_DIR   = resolve(__dirname, 'build'),
+      APP_DIR     = resolve(__dirname, 'app'),
+      ASSETS_DIR  = '/assets',
+      OUTPUT_FILE = 'bundle.js',
+      ENTRY_FILE  = resolve(APP_DIR, 'entry.js'),
+      HOST_NAME   = 'localhost', // <-- will be on local network
+      PORT        = 5000;
 
 module.exports = {
-  entry:     resolve(APP_DIR, 'entry.js'),
+  entry:     [
+    'tether',
+    'font-awesome-loader',
+    bootstrapEntryPoints.dev,
+    ENTRY_FILE
+  ],
+
   output:    {
-    path:     BUILD_DIR,
-    filename: 'bundle.js'
+    path:       BUILD_DIR,
+    filename:   OUTPUT_FILE,
+    publicPath: ASSETS_DIR
   },
   devtool:   'source-map',
   devServer: {
@@ -26,6 +39,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
+
 
   module: {
 
@@ -57,6 +71,16 @@ module.exports = {
       exclude: /(node_modules)|(bower_components)/,
       loader:  'babel-loader'
     }]
-  }
+  },
+
+  plugins: [
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      'window.Tether': 'tether',
+    }),
+    new webpack.LoaderOptionsPlugin({
+      postcss: [autoprefixer],
+    }),
+  ]
 
 };

@@ -7,4 +7,4 @@
  */
 
 import './styles/main.scss';
-import app from './index';
+import './index';
