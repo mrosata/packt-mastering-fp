@@ -41,9 +41,5 @@ function showWelcome() {
         </cite>
       </footer>
     </blockquote>
-      
-      
   `;
-
-
 }
