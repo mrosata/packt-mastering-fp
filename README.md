@@ -13,6 +13,7 @@ You should have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-
  
 <br>
  **1** - The first step is to download the project and move into the project directory.
+
 ```bash
 # Clone the repo with either the HTTPS web address
 git clone https://github.com/mrosata/packt-mastering-fp.git
@@ -25,7 +26,7 @@ cd packt-mastering-jp
 <br>
 **2** - After you have cloned the repo and changed into the project directory, move to the branch you want to work in and install the project dependencies using either `npm` or `yarn`.
 
-```sh
+```bash
 git checkout volume-one
 
 # with yarn
