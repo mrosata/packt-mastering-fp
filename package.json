@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack ./app/index.js build/bundle.js --progress --colors",
-    "serve": "webpack-dev-server --progress --colors",
+    "serve": "webpack-dev-server --progress --colors --hot",
+    "watch": "webpack --progress --colors --watch",
     "help": "webpack --help --color",
     "bower": "bower"
   },

@@ -1,6 +1,10 @@
-"use strict"
-"use strict"
-import {reduce, map, getBestStats, studentStats} from '1.2.4.code';
+"use strict";
+/**
+ *  Volume 1:
+ *     section 2, video 5:
+ *        Map, Reduce, Higher-Order DOM
+ */
+import {reduce, map, getBestStats, studentStats} from './1.2.4.code';
 
 const {isArray}   = Array;
 
@@ -16,11 +20,9 @@ const students = [
 ];
 
 
-const appRoot     = document.querySelector('#packt-pub');
+const appRoot     = document.querySelector('#packtPubApp');
 
-
-appRoot.appendChild(stud(map(studentStats, students)));
-
+//appRoot.appendChild(/** HTMLElement **/);
 
 
 

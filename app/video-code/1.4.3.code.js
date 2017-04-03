@@ -1,6 +1,8 @@
 "use strict";
 /**
- * 1.4.3.code.js
+ *  Volume 1:
+ *     section 4, video 3:
+ *         Stateless JavaScript DOM and DOM Renderer
  */
 import {map, is, mapObjIndexed} from 'ramda';
 

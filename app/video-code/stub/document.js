@@ -1,4 +1,9 @@
 /**
+ * @info !! THIS FILE IS MEANT FOR NODE !!
+ *       !! Do not import it into files !!
+ *       !! that you intend to use in   !!
+ *       !! webpack.                    !!
+ *
  * @file stub/document
  */
 
@@ -57,9 +62,9 @@ function querySelector(selector) {
  * In order to run code as if we're in the browser but get the debugging in IDE I stubbed document to
  * mock the DOM (since we were not actually using the DOM in video, we just needed impure code)
  *
- * @type {{querySelector: querySelector, HTMLElement: HTMLElement, HTMLInputElement: HTMLInputElement}}
+ * @type {{querySelector: function, HTMLElement: HTMLElement, HTMLInputElement: HTMLInputElement}}
  */
-export default {
+module.exports = {
   querySelector,
   HTMLElement,
   HTMLInputElement

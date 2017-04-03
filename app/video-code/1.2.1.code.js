@@ -5,6 +5,14 @@
  *         Promoting Reusable Higher-Order Functions
  */
 
+
+/**
+ * A Fake Remote Logger to use in our example
+ *
+ * @example
+ *    const rl = new RemoteLogger();
+ *    rl.sendMessage("Anything at all", {is:324})
+ */
 class RemoteLogger {
   constructor() {}
 
@@ -15,6 +23,7 @@ class RemoteLogger {
   }
 
 }
+
 
 
 /**

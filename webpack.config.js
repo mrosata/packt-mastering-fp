@@ -9,9 +9,10 @@ const bootstrapEntryPoints = require('./webpack.bootstrap.config.js');
 
 const BUILD_DIR   = resolve(__dirname, 'build'),
       APP_DIR     = resolve(__dirname, 'app'),
+      ASSETS_DIR  = '/assets',
       OUTPUT_FILE = 'bundle.js',
       ENTRY_FILE  = resolve(APP_DIR, 'entry.js'),
-      HOST_NAME   = '0.0.0.0', // <-- will be on local network
+      HOST_NAME   = 'localhost', // <-- will be on local network
       PORT        = 5000;
 
 module.exports = {
@@ -25,7 +26,7 @@ module.exports = {
   output:    {
     path:       BUILD_DIR,
     filename:   OUTPUT_FILE,
-    publicPath: '/'
+    publicPath: ASSETS_DIR
   },
   devtool:   'source-map',
   devServer: {

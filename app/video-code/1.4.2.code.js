@@ -1,70 +1,21 @@
-"use strict";
-import {
-  set, map, when, is, curry, mapObjIndexed, lens, assoc, prop, view, lensPath, lensProp, lensIndex
-} from 'ramda';
+"use strict";"use strict";
+/**
+ *  Volume 1:
+ *     section 4, video 2:
+ *         Lenses with Ramda
+ */
+import {lens, set, view, map, when, is, curry, assoc, prop, lensProp, lensPath} from 'ramda';
 
-const {assert} = console;
+const {assert, log} = console;
 
 // The same object from last example.
-const state = pokerTable();
+const state = freezer(pokerTable());
 
-
-
+// A function to log out table details.
 logOut(state, 'initial object');
 
 
-const getter = prop;
-const setter = assoc;
-
-
-const thirdElem = lensIndex(2);
-
-
-const arr = ['hi', 'there', 'good', 'friend'];
-
-console.log(
-  view(thirdElem, arr)
-);
-
-const newArr = set(thirdElem, 'old', arr);
-
-
-console.log(newArr.join(' '));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function lenses(...props) {
-  return map(propName => {
-    return lens(prop(propName), assoc(propName));
-  }, props);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//debugger;
 
 
 
@@ -81,11 +32,6 @@ function freezer(obj) {
   )(obj);
   return Object.freeze(obj);
 }
-
-
-
-
-
 
 
 /**
@@ -116,19 +62,12 @@ function pokerTable() {
 }
 
 
-
-
-
-
-
-
-
 /**
  * Log a poker table
- * @param state
- * @param label
+ * @param state   poker table object to display info of
+ * @param [label] optional label for console log
  */
-function logOut(state, label) {
+function logOut(state, label='') {
   console.log(`\n\n${label}\n
   Ante: ${state.ante}
   Phase: ${state.phase}

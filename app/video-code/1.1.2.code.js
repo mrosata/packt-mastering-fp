@@ -1,8 +1,13 @@
-"use strict"
+"use strict";
 /**
  *  Volume 1:
- *     section 1, video 2:
- *         Identify and Encapsulate Impurities
+ *     section 1, video 2
+ *
+ * circle area = πr^2
+ * rect area   = w * len
+ * radius      = diam / 2
+ * total area  = (topCircleArea * 2) + sideArea
+ * Final surface area ~ 1256.64 square units
  */
 
 const pi = Math.PI;
@@ -14,12 +19,18 @@ const squared  = n => n ** 2;
 const doubled  = n => n * 2;
 
 
+const height = 10;
+const diam   = 20;
+
+
 function surfaceAreaCylinder(height, diameter) {
 
 }
 
 
-const totalArea = surfaceAreaCylinder
+const totalArea = surfaceAreaCylinder;
 
 
-export {sum, multiply, divide, squared, doubled};
+//debugger;
+
+//export {multiply, sum, divide, squared, doubled};

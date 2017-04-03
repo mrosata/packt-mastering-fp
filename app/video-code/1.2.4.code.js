@@ -24,4 +24,9 @@ const students = [
 
 
 const total = [1, 2, 3, 4, 5];
-debugger;
+
+
+//debugger;
+
+// After finishing, export these for use in next lesson
+//export {reduce, map, getBestStats, studentStats};
