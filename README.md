@@ -7,11 +7,13 @@ To follow along with the videos, switch to the corresponding branch for that vol
 
 
 <br>
+
 #### Setting Up the Project
 
 You should have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Node](https://nodejs.org/en/download/) installed on your computer already. Additionally I recommend using [yarn](https://yarnpkg.org) for package management, but it's not required.
  
 <br>
+
  **1** - The first step is to download the project and move into the project directory.
 
 ```bash
@@ -24,6 +26,7 @@ cd packt-mastering-jp
 ```
 
 <br>
+
 **2** - After you have cloned the repo and changed into the project directory, move to the branch you want to work in and install the project dependencies using either `npm` or `yarn`.
 
 ```bash
@@ -37,6 +40,7 @@ npm install
 ```
 
 <br>
+
 **3** - When the install is complete, you should be able to run the dev server on `http://localhost:5000`.
 
 ```bash
