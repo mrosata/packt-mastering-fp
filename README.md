@@ -55,6 +55,12 @@ The dev server should live reload in the browser anytime you make changes to a f
 
 The dev server actually runs on "localhost:5000", if that is not desirable then you can configure the `HOST` and `PORT` values at the top of the [webpack.config.js](https://github.com/mrosata/packt-mastering-fp/blob/master/webpack.config.js) file. For instance, making the port "0.0.0.0" would allow you to view the site on other machines in your network.
 
+
+**Note:** If you encounter problems with the latest version of Node 7.x and the `node-sass`
+package in Linux, try to remove your `node_modules` folder and reinstall using
+`npm install` or `yarn install`. If you still receive an error compiling project try to move to node
+version 6.10 or
+
 ---
 Michael Rosata<br>
 Packt Publishing<br>
