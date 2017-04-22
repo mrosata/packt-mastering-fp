@@ -1,3 +1,4 @@
+"use-strict"
 /***
  *  ENTRY POINT FOR WEBPACK.
  *    A library might export values from here. Exports in a web-app are
