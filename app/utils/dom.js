@@ -1,58 +1,47 @@
-"use strict";
+import h from 'virtual-dom/h'
+import patch from 'virtual-dom/patch'
+import diff from 'virtual-dom/diff'
+import createElement from 'virtual-dom/create-element'
+import {compose} from 'ramda'
+
+
 /**
- *  Volume 1:
- *     section 4, video 3:
- *         Stateless JavaScript DOM and DOM Renderer
+ * The first time a root tree is rendered it is handled with renderDOM.
+ * This function will return a function that can be used to subsequently
+ * update the DOM when state changes occur.
+ *
+ * @param {function} treeBuilder - probably JSX or Virtual-Dom function
+ * @param {HTMLElement} root     - parent node to insert template
+ * @param {object} [_state={}]   - optional initial state
+ * @returns {function}           - function to diff and render updated UI
  */
-import {map, is, mapObjIndexed} from 'ramda';
+export function renderDOM(treeBuilder, root, _state = {}) {
+  // In order to be able to do the dom diffing, we need to maintain
+  // references to the currentTree (for comparision) and the rootNode
+  let currentTree = treeBuilder(_state)
+  const rootNode = createElement(currentTree)
 
-/**
- * Take a function that passes state from our object
- * to our HTML Component.
- * Render that Element into root
- * @param {function} stateToUI
- * @param  root
- * @param defState
- */
-export function renderDOM(stateToUI, root, defState={}) {
+  root.appendChild(rootNode)
 
-  const initUI = stateToUI(defState);
-  root.appendChild(initUI);
-
-  return (state) => {
-    if (root.hasChildNodes()) {
-      root.removeChild(root.firstElementChild);
-    }
-    root.appendChild(stateToUI(state));
-  }
-}
-
-
-function makeElem(elementType, props, children) {
-  const elem = document.createElement(elementType);
-
-  if (is(Object, props)) {
-    mapObjIndexed((val, key) => {
-      elem[key] = val;
-    }, props);
+  function renderApp(domTree) {
+    const updatedDom = diff(currentTree, domTree)
+    patch(rootNode, updatedDom)
+    currentTree = domTree
   }
 
-  map((child) => is(HTMLElement, child) ?
-      elem.appendChild(child) :
-      elem.appendChild(document.createTextNode(child)), children);
-
-  return elem;
+  return compose(renderApp, treeBuilder)
 }
 
-
 /**
- * Create HTML structures in JavaScript
- * @param elementType
- * @param props
- * @param children
+ * Takes the JSX and parses it (when babel compiles the JSX, all it
+ * actually does is call this function!)
+ * @ignore
  */
-export default function html(elementType, props, ...children) {
-  // Create an element for ui
-  return makeElem(elementType, props, children);
-};
-
+export default function dom(type, props, ...children) {
+  if (typeof type === "function") {
+    // Pass the state into the function to get the elem tree
+    return type(props, children);
+  }
+  // Element doesn't have state (or it's already hydrated)
+  return h(type, props, children)
+}
