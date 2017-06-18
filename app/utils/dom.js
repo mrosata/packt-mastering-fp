@@ -1,8 +1,16 @@
+import VNode from 'virtual-dom/vnode/vnode'
+import VText from 'virtual-dom/vnode/vtext'
+import HTML from 'html-to-vdom'
 import h from 'virtual-dom/h'
 import patch from 'virtual-dom/patch'
 import diff from 'virtual-dom/diff'
 import createElement from 'virtual-dom/create-element'
 import {compose} from 'ramda'
+
+export const fromHTML = HTML({
+  VNode: VNode,
+  VText: VText
+})
 
 
 /**

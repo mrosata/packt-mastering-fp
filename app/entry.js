@@ -6,6 +6,5 @@
  *    here. We might export from './index.jsx' which is why it is not
  *    the entry file as Webpack will complain about importing from entry.
  */
-
 import './styles/main.scss';
 import './index';
