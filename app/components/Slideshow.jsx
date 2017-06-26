@@ -8,7 +8,7 @@ export default ({ slides = [], settings = {}}) => {
   return (
     <div>
       { R.map((colSlides) => (
-        <Column slides={ colSlides } />
+        <Column fullscreen={ R.prop('fullscreen', settings) } slides={ colSlides } />
       ), slides) }
     </div>
   )

@@ -1,8 +1,16 @@
 import dom, { fromHTML } from 'utils/dom'
 import R from 'ramda'
+import { K } from 'utils/combinators'
 
 // slideClass :: Slide -> String
 const slideClass = (slide) => `slide ${ !slide.active ? '' : 'active' }`
+
+// columnClass :: Bool -> Str
+const columnClass = R.ifElse(
+  R.equals(true),
+  K('fullscreen presentation'),
+  K('presentation')
+)
 
 // Img :: Obj -> VNode
 const Img = ({ src, alt = ''}) => <img src={ src } alt={ alt } />
@@ -33,9 +41,9 @@ const Slide = (slide) => (
 
 
 // Column :: [Slide] -> VNode
-export const Column = ({ slides }) => (
+export const Column = ({ slides, fullscreen = false }) => (
   <div
-    className={'presentation column'}>
+    className={ columnClass(fullscreen) }>
     { R.map(Slide, slides) }
   </div>
 )

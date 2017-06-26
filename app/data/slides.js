@@ -21,6 +21,7 @@ export default {
     },
     {
       id: 2,
+      order: 0,
       title: 'I/O Here We Go!',
       text: 'Input and Output are what make the world go round.',
       style: {
@@ -39,7 +40,7 @@ export default {
     {
       id: 2,
       title: 'I/O Here We Go!',
-      order: 3,
+      order: 2,
       html: `<ul>
                <li>Nobody knows where "input" comes from</li>
                <li>But if we analyze Input, we see the word "put"</li>
@@ -91,7 +92,7 @@ export default {
     {
       id: 2,
       title: 'I/O Here We Go!',
-      order: 2,
+      order: 3,
       html: `<ul>
                <li>Nobody knows where "input" comes from</li>
                <li>But if we analyze Input, we see the word "put"</li>

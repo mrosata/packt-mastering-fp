@@ -1,44 +1,53 @@
-import R from 'ramda'
 import dom from 'utils/dom'
-import SlideMap from './SlideMap'
+import R from 'ramda'
 import { existsObjAt } from 'utils/slide-utils'
-const { o } = R
+import SlideMap from './SlideMap'
 
-const up = R.over(R.lensIndex(1), R.dec)
-const down = R.over(R.lensIndex(1), R.inc)
+const { o, assoc, flip, lensIndex, over, set, inc, dec } = R
 
-const left = o(
-  R.set(R.lensIndex(1), 0),
-  R.over(R.lensIndex(0), R.dec)
-)
+// right :: [Int, Int] -> [Int, Int]
 const right = o(
-  R.set(R.lensIndex(1), 0),
-  R.over(R.lensIndex(0), R.inc)
+  set(lensIndex(1), 0), over(lensIndex(0), inc)
 )
 
+// left :: [Int, Int] -> [Int, Int]
+const left = o(
+  set(lensIndex(1), 0), over(lensIndex(0), dec)
+)
+
+// up :: [Int, Int] -> [Int, Int]
+const up = over(lensIndex(1), dec) /// instead of [col, slide--]
+
+// down :: [Int, Int] -> [Int, Int]
+const down = over(lensIndex(1), inc) // instead of [col, slide++]
 
 export default (props) => {
   const {
-    slides = [],
-    slidePos = [0,0],
+    presentation: {
+      slides = [],
+      slidePos = [0,0],
+    },
     settings = {},
-    dispatch
+    dispatch,
   } = props
 
+  // moveToSlide :: [Int, Int] -> void
   const moveToSlide = o(
     dispatch,
-    R.flip(R.assoc('value'))({ type: 'MOVE_TO_SLIDE' })
+    flip(assoc('value'))({ type: 'MOVE_TO_SLIDE' })
   )
 
+  // slidesLoaded :: Bool
+  const slidesLoaded = !!(slides && slides.length)
+
+  // changeSetting :: (String, Bool) -> void
   const changeSetting = (setting, value) => {
     dispatch({ type: 'CHANGE_SETTING', value: [setting, value] })
   }
-  const slidesLoaded = !!(slides && slides.length)
 
   const buttons  = [
     [left(slidePos), 'left'],
     [right(slidePos), 'right'],
-    [' - '],
     [up(slidePos), 'up'],
     [down(slidePos), 'down'],
   ]
@@ -49,11 +58,11 @@ export default (props) => {
       <SlideMap slides={ slides } />
 
       {
-        buttons.map(([btnFn, dir], index) => R.is(String, btnFn) ? <span>{ btnFn }</span> : (
+        buttons.map(([nextSlidePos, dir], index) => (
           <button
             className='btn btn-lg btn-info btn-outline'
-            onclick={ () => moveToSlide(btnFn) }
-            disabled={ R.not(existsObjAt(btnFn)(slides)) }
+            onclick={ () => moveToSlide(nextSlidePos) }
+            disabled={ R.not(existsObjAt(nextSlidePos)(slides)) }
           >
             <i className={ `fa fa-arrow-${ dir }` }></i>
             <span className="hidden">{ dir }</span>
@@ -61,19 +70,23 @@ export default (props) => {
         ))
       }
 
+
       <button
         className='btn btn-lg btn-info btn-outline'
         onclick={ () => changeSetting(
           'fullscreen', !R.prop('fullscreen', settings)
         ) }
       >
-        <i className={ `fa fa-${
+        <i className={ `fa fa-${      // 'fa-compress' : 'fa-expand'
           R.prop('fullscreen', settings) ? 'compress' : 'expand'}`
         }></i>
         <span className="hidden">Up</span>
       </button>
 
+
       &nbsp; - &nbsp;
+
+
       {  !slidesLoaded ? null : (
         <button
           onclick={ () => moveToSlide([0, 0]) }

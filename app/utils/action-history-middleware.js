@@ -24,7 +24,6 @@ export default R.curry((createStore, reducer, initState) => {
   const middleDispatch = (action) => {
     store.dispatch(action)
     actionHistory.push(action)
-    console.log(actionHistory)
   }
 
   return {

@@ -1,6 +1,6 @@
 {
   "name": "packtpub-mastering-fp",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "Course project for Mastering Functional JavaScript, a Packt Pub Learning Path ",
   "main": "index.js",
   "author": "Michael Rosata <michael.rosata@gmail.com>",
@@ -43,8 +43,9 @@
   "dependencies": {
     "bootstrap-loader": "^2.0.0",
     "font-awesome": "^4.7.0",
+    "html-to-vdom": "^0.7.0",
     "jquery": "^3.2.1",
-    "ramda": "^0.23.0"
+    "ramda": "^0.24.0"
   },
   "repository": {
     "type": "git",
