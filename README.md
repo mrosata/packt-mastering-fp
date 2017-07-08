@@ -1,9 +1,23 @@
 ## Mastering Functional Programming With JavaScript
 ##### PacktPub and Michael Rosata
 
-The code in this repo goes along with the videos in the Packt Publishing "Mastering Functional Programming with JavaScript" course and can be followed along through the different branches of the repo. The master branch will have some of the completed project functionality so that you could use it as a base for practicing your functional programming in the future if you wanted. The other branches are specific to volumes of the course.
+The code in this repo is used in the video courses created by Packt Publishing: ***"Mastering Functional Programming with JavaScript"*** and ***"Declarative Apps using Functional JavaScript"***. Both courses are independant, but build into one final app and so there are different branches for both courses repo.
 
-To follow along with the videos, switch to the corresponding branch for that volume. IE: `git checkout volume-one` will bring you to a version of the project with all the starter files for the "volume one" videos. At the moment only `volume-one` is available.
+**Please make sure to use the correct branch for your course**. The first course "Mastering Functional Programming with JavaScript" is on the branch `volume-one`
+
+```bash
+git checkout volume-one
+```
+
+The *second volume* "Declarative Apps using Functional Javascript", is on branch `volume-two`
+
+```bash
+git checkout volume-two
+```
+
+The master branch could be useful as a practice project. Feel free to use `master` as your base for developing functional programming skills in the future. The other branches are specific to volumes in the course.
+
+To follow along with the videos, switch to the corresponding branch for that volume. IE: `git checkout volume-one` will bring you to a version of the project with all the starter files for Mastering Functional JavaScript. Both `volume-one` and `volume-two` are both available.
 
 
 <br>
@@ -32,10 +46,10 @@ cd packt-mastering-jp
 ```bash
 git checkout volume-one
 
-# with yarn
-yarn install
+# using yarn, installation is one simple command:
+yarn
 
-# if using NPM to install
+# if using NPM to install, it's still simple:
 npm install
 ```
 
@@ -61,5 +75,6 @@ The dev server actually runs on "localhost:5000", if that is not desirable then 
 
 ---
 Michael Rosata<br>
-Packt Publishing<br>
+[Packt Publishing](https://www.packtpub.com)<br>
 &copy; 2017
+ 
