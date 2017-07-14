@@ -10,7 +10,8 @@
     "serve": "webpack-dev-server --progress --colors --hot",
     "watch": "webpack --progress --colors --watch",
     "help": "webpack --help --color",
-    "bower": "bower"
+    "bower": "bower",
+    "nodemon": "nodemon"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
@@ -42,9 +43,12 @@
   },
   "dependencies": {
     "bootstrap-loader": "^2.0.0",
+    "chalk": "^2.0.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
-    "ramda": "^0.23.0"
+    "nodemon": "^1.11.0",
+    "ramda": "^0.23.0",
+    "readline-sync": "^1.4.7"
   },
   "repository": {
     "type": "git",
