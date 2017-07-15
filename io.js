@@ -6,48 +6,40 @@ const prompt = require('readline-sync')
 const { compose, map, ap, chain, equals } = R
 
 class IO {
-  
+
+  // of :: (IO f) => a -> f a
   static of (value) {
     return new IO(value)
   }
 
-
   constructor (value) {
-    if (typeof value !== "function") {
-      throw new Error(
-      'IO constructor expects a function, actual: ' + typeof value)
+    if (typeof value !== 'function') {
+      throw new Error('IO Monad requires a function')
     }
     this.value = value
   }
 
+  // fmap :: (IO f) => f a ~> (a -> b) -> f b
+  fmap (atob) {
+    return new IO(() => atob(this.run()))
+  }
+ 
+  // ap :: (IO f) => f a ~> f (a -> b) -> f b
+  ap (aFn) {
+    return new IO(() => aFn.run()(this.run()))
+  }
+  
+  // chain :: (IO f) => f a ~> (a -> f b) -> f b
+  chain(fn) {
+    //return fn(this.run())
+    return new IO(() => fn(this.run()).run())
+  }
 
   run() {
     return this.value()
   }
-  
-
-  fmap (fn) {
-    return IO.of(() => fn(this.run()))
-  }
- 
-
-  ap (aFn) {
-    return this.fmap(aFn.value())
-  }
-  
-
-  chain(fn) {
-    return IO.of(() => fn(this.run())).run()
-  }
 }
 
-
-const id = x => x
-const f = n => n * 1.07 + 10
-const g = n => 100 - n
-const fg = compose(g, f)
-
-const login = username => password => `Sign in ${ username }, ${ password }...`
 
 function getUser() {
   return prompt.question('What is your username?')
@@ -55,12 +47,23 @@ function getUser() {
 function askForPassword(username) {
   return IO.of(() => {
     console.log(`Hey there ${ username }!`)
-    return prompt.question('Password please: ')
+    const pass = prompt.question('Password please: ')
+    return {username, pass}
   })
+}
+function checkPassword({username, pass}) {
+  const isCorrect = pass === '12345'
+  log(
+    isCorrect ?
+      `Welcome ${ username  }, to the machine!` :
+      `Whoa ${ username }, come back correct!`
+  )
+  return isCorrect
 }
 
 
-IO.of(getUser).chain(askForPassword).fmap(value => {
-  console.log(typeof value, value)
-}).run()
+IO.of(getUser)
+  .chain(askForPassword)
+  .ap(IO.of(() => checkPassword))
+  .run()
 

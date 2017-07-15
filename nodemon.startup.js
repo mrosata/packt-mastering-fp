@@ -4,12 +4,19 @@ const path = require('path')
 const chalk = require('chalk')
 const { log } = console
 const { join, resolve } = path
+const COLS = 80-1
+const BRAND = 'Packt Pub'
 
 // Don't let program close instantly (for exit handlers)
 process.stdin.resume()
-
-const mainFile = './io.js'
+console.log(process.argv[1])
+const mainFilename = process.argv[2] || 'index.js'
+const mainFile = join(resolve('.', mainFilename))
 const colorsFile = join(resolve('.'), '~colors.tmp')
+
+// fillSpaces :: (Int, a) -> [a]
+const fillSpaces = (count, value) => new Array(count).fill(value).join('')
+
 // colors for console
 let colors = ['green', 'red', 'cyan', 'magenta']
 fs.readFile(colorsFile, 'utf8', (err, body) => {
@@ -25,10 +32,14 @@ fs.readFile(colorsFile, 'utf8', (err, body) => {
     chalk[colors[3]] : chalk.magenta
 
   console.reset()
+  const emptySpace = COLS - BRAND.length - 8
+  const quarter = Math.floor(emptySpace / 4)
+  const extra = emptySpace - (quarter*4)
   log(chalk.bold(`${
-      secColor('---------------------------------------') +
-      secColor('******  -----') }  ${ mainColor('Packt  Pub') } ${ secColor('-----  ******')
-      }\n\n`
+      secColor(fillSpaces(COLS, '-')) +
+      secColor(`${ fillSpaces(quarter, '*') }  ${ fillSpaces(quarter, '-') }`) }  `
+    + `${ mainColor(BRAND) }  ${ secColor(fillSpaces(quarter, '-')) }  `
+    + `${ secColor(fillSpaces(quarter + extra, '*')) }\n\n`
   ))
   fs.writeFileSync(colorsFile, rotate(colors).join(','), 'utf8')
   require(mainFile)

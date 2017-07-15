@@ -4,24 +4,28 @@ const { log } = console
 
 const { compose, map, ap, chain, equals } = R
 
-class Functor {
-  
+class Monad {
+
+  // of :: (Monad f) => a -> f a
   static of (value) {
-    return new Functor(value)
+    return new Monad(value)
   }
 
   constructor (value) {
     this.value = value
   }
 
+  // fmap :: (Monad f) => f a ~> (a -> b) -> f b
   fmap (fn) {
-    return new Functor(fn(this.value))
+    return new Monad(fn(this.value))
   }
  
+  // ap :: (Monad f) => f a ~> f (a -> b) -> f b
   ap (aFn) {
     return this.fmap(aFn.value)
   }
   
+  // chain :: (Monad f) => f a ~> (a -> f b) -> f b
   chain(fn) {
     return this.fmap(fn).value
   }
@@ -34,23 +38,24 @@ const g = n => 100 - n
 const fg = compose(g, f)
 
 
-const fa = new Functor('Apply World')
+const fa = new Monad('Apply World')
+
 // Identity
 log(
-  fa.ap(new Functor(R.toUpper)).ap(new Functor(R.concat('Hello, ')))
+  fa.ap(new Monad(R.toUpper)).ap(new Monad(R.concat('Hello, ')))
 )
 
 log(equals(
-  Functor.of(100).ap(Functor.of(f))
+  Monad.of(100).ap(Monad.of(f))
   ,
-  Functor.of(f).ap(Functor.of(f => f(100)))
+  Monad.of(f).ap(Monad.of(f => f(100)))
 ))
 
-const mf = n => Functor.of(f(n))
-const mg = n => Functor.of(g(n))
+const mf = n => Monad.of(f(n))
+const mg = n => Monad.of(g(n))
 
 log(equals(
-  Functor.of(100).chain(mf).chain(mg), Functor.of(100).fmap(mf).value.fmap(mg).value
+  Monad.of(100).chain(mf).chain(mg), Monad.of(100).fmap(mf).value.fmap(mg).value
 ))
 
-log(Functor.of(100).chain(Functor.of))
+log(Monad.of(100).chain(Monad.of))
