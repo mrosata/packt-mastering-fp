@@ -6,12 +6,17 @@ const { compose, map, ap, chain, equals } = R
 
 
 class Maybe {
+
+  // of :: (Maybe a) => a -> m a
   static of(value) {
     return new Just(value)
   }
+  
+  // toMaybe :: (Maybe m) => a -> m a
   static toMaybe(value) {
     return value == null ? new Nothing() : new Just(value)
   }
+
   constructor(value) {
     if (this.constructor === Maybe) {
       throw new Error('Maybe is not a constructor')
@@ -25,17 +30,17 @@ class Maybe {
 class Just extends Maybe {
   get isJust() { return true }
   get isNothing() { return false }
-  // fmap :: (Just f) => f a ~> (a -> b) -> f b
+  // fmap :: (Maybe m) => m a ~> (a -> b) -> m b
   fmap (fn) {
     return new Just(fn(this.value))
   }
  
-  // ap :: (Just f) => f a ~> f (a -> b) -> f b
+  // ap :: (Maybe m) => m a ~> m (a -> b) -> m b
   ap (aFn) {
     return this.fmap(aFn.value)
   }
   
-  // chain :: (Just f) => f a ~> (a -> f b) -> f b
+  // chain :: (Maybe m) => m a ~> (a -> m b) -> m b
   chain(fn) {
     return this.fmap(fn).value
   }
@@ -45,17 +50,17 @@ class Just extends Maybe {
 class Nothing extends Maybe {
   get isNothing() { return true }
   get isJust() { return false }
-  // fmap :: (Nothing f) => f () ~> (a -> b) -> f ()
+  // fmap :: (Maybe m) => m a ~> (a -> b) -> m a
   fmap (fn) {
     return this
   }
  
-  // ap :: (Nothing f) => f () ~> f (a -> b) -> f ()
+  // ap :: (Maybe m) => m a ~> m (a -> b) -> m b
   ap (aFn) {
     return this
   }
   
-  // chain :: (Nothing f) => f () ~> (a -> f ()) -> f ()
+  // chain :: (Maybe m) => m a ~> (a -> m a) -> m a
   chain(fn) {
     return this
   }
@@ -101,7 +106,3 @@ log(
   toMaybe(null).ap(toMaybe(x => x + 100))
 )
 
-
-log(
-  R.ap(toMaybe(100), toMaybe(x => x + 20020))
-)
