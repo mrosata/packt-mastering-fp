@@ -4,7 +4,7 @@ const path = require('path')
 const chalk = require('chalk')
 const { log } = console
 const { join, resolve } = path
-const COLS = 80-1
+const COLS = 40
 const BRAND = 'Packt Pub'
 
 // Don't let program close instantly (for exit handlers)
@@ -32,14 +32,14 @@ fs.readFile(colorsFile, 'utf8', (err, body) => {
     chalk[colors[3]] : chalk.magenta
 
   console.reset()
-  const emptySpace = COLS - BRAND.length - 8
+  const emptySpace = (COLS-1) - (BRAND.length) - 8
   const quarter = Math.floor(emptySpace / 4)
   const extra = emptySpace - (quarter*4)
   log(chalk.bold(`${
-      secColor(fillSpaces(COLS, '-')) +
-      secColor(`${ fillSpaces(quarter, '*') }  ${ fillSpaces(quarter, '-') }`) }  `
+      secColor(fillSpaces((COLS-1), '-')) +
+      secColor(`${ fillSpaces(quarter + Math.floor(extra/2), '*') }  ${ fillSpaces(quarter, '-') }`) }  `
     + `${ mainColor(BRAND) }  ${ secColor(fillSpaces(quarter, '-')) }  `
-    + `${ secColor(fillSpaces(quarter + extra, '*')) }\n\n`
+    + `${ secColor(fillSpaces(quarter + Math.ceil(extra/2), '*')) }\n\n`
   ))
   fs.writeFileSync(colorsFile, rotate(colors).join(','), 'utf8')
   require(mainFile)
