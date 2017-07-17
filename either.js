@@ -1,41 +1,41 @@
 const R = require('ramda')
 const { log } = console
-
-const { compose, map, ap, chain, equals } = R
+const { map, compose, equals } = R
 
 
 class Either {
- 
-  // of :: a -> Either a b
-  static of(value) {
+  
+  // of :: (Either m) => a -> m a
+  static of (value) {
     return new Right(value)
   }
   
-  // toEither :: a -> Either a b
-  static toEither(value) {
-    return value == null ? Left.of(value) : Right.of(value)
-  }
-
-  // encase :: (a, () -> b) -> Either a b
-  static encase(leftValue, rightFn) {
-    try {
-      return new Right(rightFn())
-    }
-    catch(e) {
-      return new Left(leftValue)
-    }
+  // toEither :: (Either m) => a -> m a
+  static toEither (value) {
+    return value == null ? new Left(value) : new Right(value)
   }
   
-  constructor(value) {
-    this.value = value
-    if (this.constructor === Either) {
-      throw new Error('Either is not a constructor')
+  // encase :: (a, () -> b) -> Either a b
+  static encase (leftValue, rightFn) {
+    try {
+      return Right.of(rightFn())
+    }
+    catch(e) {
+      return Left.of(leftValue)
     }
   }
 
+  constructor (value) {
+    if (this.constructor === Either) {
+      throw new Error('Either should not be used as constructor.')
+    }
+      this.value = value
+  }
+  
   // bimap :: (Either e) => e a b ~> (a -> c, b -> d) -> e c d
-  bimap(lFn, rFn) {
-    return this.isRight ? Right.of(rFn) : Left.of(lFn(this.value))
+  bimap (leftFn, rightFn) {
+    return this.isRight ? 
+      Right.fmap(rightFn) : Left.of(leftFn(this.value))
   }
 
   // alt :: (Either e) => e a b ~> (e a b) -> e a b
@@ -43,56 +43,59 @@ class Either {
     if (Either.isEither(alternative)) {
       return this.isRight ? this : alternative
     }
-    throw new Error('Either#alt expects an Either as its argument')
+    throw new Error('Either#alt expects an Either as an argument')
   }
 }
-
 
 
 class Right extends Either {
+  
   get isRight() { return true }
   get isLeft() { return false }
+
   // fmap :: (Either e) => e a b ~> (b -> c) -> e a c
   fmap (fn) {
-    return Right.of(fn(this.value))
+    return new Right(fn(this.value))
   }
   
   // ap :: (Either e) => e a b ~> e a (b -> c) -> e a c
-  ap (aFn) {
-    return aFn.chain(f => this.fmap(f))
+  ap (aFn) { 
+    //return this.fmap(aFn.value)
+    return aFn.chain(fn => Right.of(fn(this.value)))
   }
-  
+
   // chain :: (Either e) => e a b ~> (b -> e a c) -> e a c
-  chain(fn) {
-    return this.fmap(fn).value
+  chain (fnA) {
+    return fnA(this.value)
   }
-  
+
 }
 
 
-class Left extends Either {
-  get isLeft() { return true }
+class Left extends Either  {
+  
   get isRight() { return false }
- 
-  // of :: a -> Either a b
+  get isLeft() { return true }
+  
   static of (value) {
     return new Left(value)
   }
 
   // fmap :: (Either e) => e a b ~> (b -> c) -> e a c
-  fmap (fn) {
+  fmap (_) {
     return this
   }
   
   // ap :: (Either e) => e a b ~> e a (b -> c) -> e a c
-  ap (aFn) {
+  ap (_) { 
     return this
   }
-  
+
   // chain :: (Either e) => e a b ~> (b -> e a c) -> e a c
-  chain(fn) {
-    return this
+  chain (_) {
+    return this 
   }
+
 }
 
 
@@ -102,47 +105,55 @@ const f = n => n * 1.07 + 10
 const g = n => 100 - n
 const fg = compose(g, f)
 
-
 const fa = new Right('Apply World')
-// Identity
+const mf = n => Right.of(f(n))
+const mg = n => Right.of(g(n))
+
+const toEither = Either.toEither
+/*
 log(
-  fa.ap(new Right(R.toUpper)).ap(new Right(R.concat('Hello, ')))
+  fa.ap(new Right(R.toUpper))
 )
 
 log(equals(
   Right.of(100).ap(Right.of(f))
   ,
-  Right.of(f).ap(Right.of(f => f(100)))
+  Right.of(f).ap(Right.of(fn => fn(100)))
 ))
-
-const mf = n => Right.of(f(n))
-const mg = n => Right.of(g(n))
 
 log(equals(
-  Right.of(100).chain(mf).chain(mg), Right.of(100).fmap(mf).value.fmap(mg).value
+  Right.of(100).fmap(mf).value.fmap(mg).value,
+  Right.of(100).chain(mf).chain(mg)
 ))
 
-log(Right.of(100).chain(Right.of))
-
-log(new Left().constructor.of(200))
-
-log(
-  Either.toEither(null)
-)
-
-const toEither = Either.toEither
+log(Right.of(101).chain(Right.of))
 
 log(
   toEither(100).ap(toEither(x => x + 100)),
-  toEither(null).ap(toEither(x => x + 100))
+  Left.of().ap(toEither(x => x + 100))
 )
+
+log(
+  Right.of(':)').ap(toEither(null))
+)
+*/
 
 log(
   Right.of(100).chain(x => Right.of(x * 100)),
-  Right.of(100).chain(x => Left.of('God Save the Queen'))
+)
+log(
+  Right.of(100).chain(x => Left.of('God Save the Queen!'))
 )
 
+
+const { encase } = Either
+// Returns Left.of('That is not JSON...')
 log(
-  Either.encase('Good Jason... but we need JSON!', () => JSON.parse('{ a: 100 }')),
-  Either.encase('Good Jason... but we need JSON!', () => JSON.parse('{ "a": 100 }'))
+  encase('That is not JSON Jason!', () => JSON.parse('{ a: 10 }'))
 )
+// Returns Right.of(object)
+log(
+  encase('That is not JSON Jason!', () => JSON.parse('{ "a": "10" }')),
+)
+
+
