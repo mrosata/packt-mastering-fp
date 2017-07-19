@@ -9,6 +9,7 @@ import mainReducer from './data/reducers'
 import middleware from './utils/action-history-middleware'
 import slides from './data/slides'
 
+
 // initialState :: Object
 const initialState = {
   title: '',
