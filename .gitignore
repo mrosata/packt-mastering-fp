@@ -13,6 +13,7 @@ sublime.project
 /.emacs.desktop.lock
 *~
 .\#*
+*.swp
 
 # Dependency directories
 node_modules

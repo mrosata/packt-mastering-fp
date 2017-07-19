@@ -1,3 +1,4 @@
+import './styles/main.scss'
 import R from 'ramda'
 import dom, { renderDOM } from 'utils/dom'
 import compose from 'utils/compose'
