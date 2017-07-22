@@ -5,6 +5,7 @@ debugging-file.js
 build/*
 !build/index.html
 !build/favicon.ico
+!build/img
 
 # IDE and texteditor configs
 .idea
