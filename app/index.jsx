@@ -39,7 +39,7 @@ const update = renderDOM((state) => {
       <Controls { ...state } dispatch={ dispatch } />
     </div>
   )
-}, document.getElementById('packtPubApp'), initialState)
+}, document.getElementById('packtPubApp'), getState())
 
 
 subscribe(() => {
