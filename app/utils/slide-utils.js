@@ -3,7 +3,7 @@ import R from 'ramda'
 export const {
   groupWith, sortBy, prop, over, lensProp, compose,
   lensPath, o, set, pathSatisfies, omit, is, when,
-  map, sort, ascend,
+  map, sort, ascend, all, propEq, complement, unnest,
 } = R
 
 // sortByOrder :: [{k:v}] -> [{k:v}]
@@ -17,9 +17,12 @@ export const groupByProp = (key) => compose(
   sortBy(R.prop(key))
 )
 
+
+const noneAreActive = o(all(complement(propEq('active', true))), unnest)
+
 // setupSlides :: Obj -> [[Object]]
 export const setupSlides = compose(
-  set(lensPath([0, 0, 'active']), true),
+  when(noneAreActive, set(lensPath([0, 0, 'active']), true)),
   prop('slides'),
   o(
     over(lensProp('slides'), map(sortByOrder)),

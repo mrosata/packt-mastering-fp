@@ -10,18 +10,24 @@ function mainReducer (state, action = {}) {
   switch (type) {
     case 'MOVE_TO_SLIDE':
       const slidePos = value
-      const slides = state.presentation.slides || []
+      const slides = activeSlide(slidePos)(
+        state.presentation.slides || []
+      )
+      
+      localStorage.setItem(
+        'slides', JSON.stringify({ title: state.title, slides: R.unnest(slides), slidePos })
+      )
       return R.mergeDeepRight(
         state, {
           presentation: {
             slidePos,
-            slides: activeSlide(slidePos)(slides)
+            slides,
           }
         }
       )
 
     case 'SETUP_SLIDES':
-      const presentation = { ...state.presentation, slides: setupSlides(value) }
+      const presentation = { ...state.presentation, slides: setupSlides(value), slidePos: value.slidePos }
       return { ...state, presentation }
 
     case 'CHANGE_SETTING':

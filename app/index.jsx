@@ -8,7 +8,7 @@ import Controls from './components/Controls'
 import mainReducer from './data/reducers'
 import middleware from './utils/action-history-middleware'
 import slides from './data/slides'
-
+import { getOrElse, toMaybe } from 'utils/maybe'
 
 // initialState :: Object
 const initialState = {
@@ -47,5 +47,18 @@ subscribe(() => {
   update(getState(), dispatch)
 })
 
+
+const getItem = localStorage.getItem.bind(localStorage)
+const fromLocalStore = R.compose(toMaybe, JSON.parse, getItem)
+
+
 dispatch({ type: 'CUSTOM_TITLE', value: 'Packt Presentation App' })
-dispatch({ type: 'SETUP_SLIDES', value: slides })
+dispatch({ type: 'SETUP_SLIDES', value: getOrElse(slides, fromLocalStore('slides')) })
+
+
+
+
+
+
+
+

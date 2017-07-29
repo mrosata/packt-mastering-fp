@@ -47,7 +47,10 @@ class Just extends Maybe {
   chain (fnA) {
     return fnA(this.value)
   }
-
+  
+  orElse() {
+    return this.value
+  }
 }
 
 
@@ -70,18 +73,22 @@ class Nothing extends Maybe  {
   chain (_) {
     return this 
   }
-
+  
+  orElse(value) {
+    return value
+  }
 }
 
 
-
 module.exports = {
-  Maybe,
   Just,
   Nothing,
-  // Export static functions as to treat the exported object
-  // as if it was actually Maybe.
   of: Maybe.of,
   toMaybe: Maybe.toMaybe,
+  isNothing(m) { return m.isNothing },
+  isJust(m) { return m.isJust },
+  getOrElse(value, m) {
+    return m.isJust ? m.value : value
+  }
 }
 
