@@ -44,12 +44,14 @@
   "dependencies": {
     "bootstrap-loader": "^2.0.0",
     "chalk": "^2.0.1",
+    "fluture": "^6.3.0",
     "font-awesome": "^4.7.0",
     "html-to-vdom": "^0.7.0",
     "jquery": "^3.2.1",
     "nodemon": "^1.11.0",
     "ramda": "^0.24.1",
-    "readline-sync": "^1.4.7"
+    "readline-sync": "^1.4.7",
+    "whatwg-fetch": "^2.0.3"
   },
   "repository": {
     "type": "git",
