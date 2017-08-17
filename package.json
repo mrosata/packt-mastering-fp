@@ -51,7 +51,8 @@
     "jquery": "^3.2.1",
     "nodemon": "^1.11.0",
     "ramda": "^0.24.1",
-    "readline-sync": "^1.4.7"
+    "readline-sync": "^1.4.7",
+    "whatwg-fetch": "^2.0.3"
   },
   "repository": {
     "type": "git",
