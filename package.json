@@ -44,6 +44,8 @@
   "dependencies": {
     "bootstrap-loader": "^2.0.0",
     "chalk": "^2.0.1",
+    "firebase": "^4.2.0",
+    "fluture": "^6.3.0",
     "font-awesome": "^4.7.0",
     "html-to-vdom": "^0.7.0",
     "jquery": "^3.2.1",

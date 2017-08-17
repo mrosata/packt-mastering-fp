@@ -6,6 +6,7 @@ build/*
 !build/index.html
 !build/favicon.ico
 !build/img
+firebase.config.*
 
 # IDE and texteditor configs
 .idea

@@ -2,30 +2,37 @@ import dom from 'utils/dom'
 import R from 'ramda'
 import { existsObjAt } from 'utils/slide-utils'
 import SlideMap from './SlideMap'
+import { toMaybe, isNothing } from 'utils/maybe'
+import RemoteSlidesBtn from './RemoteSlidesBtn'
 
-const { o, assoc, flip, lensIndex, over, set, inc, dec } = R
+
+const { o, zipWith, add, assoc, flip, lensIndex, over, set, inc, dec } = R
+
+// vAdd :: [Int, Int] -> [Int, Int]
+const vAdd = zipWith(add)
 
 // right :: [Int, Int] -> [Int, Int]
-const right = o(
-  set(lensIndex(1), 0), over(lensIndex(0), inc)
-)
+const right = vAdd([1, 0])
 
 // left :: [Int, Int] -> [Int, Int]
-const left = o(
-  set(lensIndex(1), 0), over(lensIndex(0), dec)
-)
+const left = vAdd([-1, 0]) 
 
 // up :: [Int, Int] -> [Int, Int]
-const up = over(lensIndex(1), dec) /// instead of [col, slide--]
+const up = vAdd([0, -1])
 
 // down :: [Int, Int] -> [Int, Int]
-const down = over(lensIndex(1), inc) // instead of [col, slide++]
+const down = vAdd([0, 1])
+
+// slideAtPosM :: ([Int, Int], Slides) -> Maybe Slide
+const slideAtPosM = R.compose(toMaybe, R.path)
 
 export default (props) => {
   const {
     presentation: {
       slides = [],
       slidePos = [0,0],
+      loading = false,
+      error,
     },
     settings = {},
     dispatch,
@@ -54,7 +61,7 @@ export default (props) => {
 
   return (
     <aside className='slide-controls'>
-
+      { error && <strong className='lead text-danger'>{ error }</strong> }
       <SlideMap slides={ slides } />
 
       {
@@ -62,7 +69,7 @@ export default (props) => {
           <button
             className='btn btn-lg btn-info btn-outline'
             onclick={ () => moveToSlide(nextSlidePos) }
-            disabled={ R.not(existsObjAt(nextSlidePos)(slides)) }
+            disabled={ isNothing(slideAtPosM(nextSlidePos, slides)) }
           >
             <i className={ `fa fa-arrow-${ dir }` }></i>
             <span className="hidden">{ dir }</span>
@@ -96,6 +103,14 @@ export default (props) => {
           <span className="hidden">Restart</span>
         </button>)
       }
+
+      <RemoteSlidesBtn
+        className='btn btn-md btn-success'
+        dispatch={ dispatch }
+        disabled={ loading }
+      >
+        <i className='fa fa-feed' />  
+      </RemoteSlidesBtn>
     </aside>
   )
 }

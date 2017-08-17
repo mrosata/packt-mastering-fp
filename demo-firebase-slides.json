@@ -1,0 +1,107 @@
+{
+  "allow_writing" : 1000,
+  "slides" : {
+    "-Slides01" : {
+      "html" : "<h3>Earthpure</h3><p><strong>In cupidatat exercitation ea nisi ex ipsum irure incididunt laborum.</strong> Aliquip duis eiusmod incididunt officia occaecat nisi ipsum occaecat sint. Labore cupidatat nulla anim voluptate. Pariatur adipisicing labore est nulla incididunt dolore. Dolor dolor eu dolor minim non irure enim incididunt aliquip incididunt. Excepteur aliqua exercitation et commodo labore quis minim.</p><br /><img src=\"https://placeimg.com/300/200/any\" alt=\"From placeimg\"/><br /><p>Deserunt labore duis tempor nulla nostrud eu proident qui. Officia veniam officia eiusmod culpa. Dolor est pariatur aute cupidatat quis irure velit sint sunt incididunt ex pariatur eu. Tempor quis mollit nisi adipisicing do cillum deserunt laborum quis aliqua. Minim ullamco ad dolor sit qui occaecat elit exercitation ipsum excepteur quis. Incididunt exercitation fugiat est elit ad officia.\n\nAmet fugiat sit amet veniam excepteur nisi laborum esse occaecat occaecat officia. Sunt sunt proident elit aliquip. Et proident irure ad velit nulla incididunt non in. Veniam nostrud id aliquip duis mollit sint enim mollit velit consectetur nostrud. Minim proident aliquip magna ea consectetur.</p>",
+      "id" : 3,
+      "image" : {
+        "alt" : "From placeimg",
+        "src" : "https://placeimg.com/300/200/any"
+      },
+      "order" : 5,
+      "rando" : 12605,
+      "style" : {
+        "background" : "#EEF5DB",
+        "color" : "#FE5F55"
+      },
+      "tags" : [ "quis", "laborum", "aliquip", "labore", "magna" ],
+      "text" : "Eu sunt officia occaecat esse voluptate nostrud do. Sunt eiusmod fugiat eiusmod eu sit eu ut cupidatat dolor veniam nisi officia. Eu minim enim do reprehenderit Lorem et mollit nisi esse exercitation.",
+      "title" : "JAMNATION"
+    },
+    "-Slides02" : {
+      "html" : "<h3>Vortexaco</h3><p><strong>Labore duis eu minim cupidatat veniam elit labore.</strong> Duis fugiat deserunt voluptate commodo. In do aute mollit laboris sit veniam est est cupidatat. Ut quis adipisicing sint pariatur duis excepteur non irure nulla magna commodo irure magna laborum. Sunt Lorem occaecat aute culpa qui consequat eiusmod ad. Velit do ex proident ea sint officia ipsum dolor non magna officia eu reprehenderit. Exercitation velit magna elit ex cupidatat nisi sit aute labore sint anim sint.</p><br /><img src=\"https://placeimg.com/300/200/any\" alt=\"From placeimg\"/><br /><p>Cillum proident id minim nulla incididunt reprehenderit consequat. Ex anim tempor amet ad in est laboris exercitation cillum. Ipsum elit fugiat adipisicing occaecat ex laboris consectetur aliquip duis. Labore commodo est et Lorem aute fugiat do fugiat pariatur voluptate veniam sint in do. Est aliqua sit laboris commodo incididunt consequat ullamco excepteur irure ea et. Proident ad nostrud pariatur duis laborum consequat.\n\nNostrud fugiat aliquip laborum minim fugiat dolore velit sit qui ut aliquip culpa. Lorem laboris excepteur velit ullamco culpa fugiat quis tempor minim et pariatur Lorem officia ad. Officia ad in fugiat est. Commodo do adipisicing magna exercitation exercitation est consequat magna deserunt aliqua adipisicing. Fugiat pariatur esse officia enim elit ea veniam est eu dolor officia culpa mollit.</p>",
+      "id" : 2,
+      "image" : {
+        "alt" : "From placeimg",
+        "src" : "https://placeimg.com/300/200/any"
+      },
+      "order" : 9,
+      "rando" : 5327,
+      "style" : {
+        "background" : "#9FD8CB",
+        "color" : "#2D3319"
+      },
+      "tags" : [ "amet", "consequat", "amet", "ullamco", "est" ],
+      "text" : "Est commodo reprehenderit sit anim consectetur elit nulla deserunt. Laboris aliquip dolor consequat officia tempor velit. Cupidatat exercitation ut id ut consequat ea magna cupidatat.",
+      "title" : "BRAINQUIL"
+    },
+    "-Slides03" : {
+      "html" : "<h3>Equitax</h3><p><strong>Ullamco non ex laboris dolor duis.</strong> Labore quis officia laborum magna ea amet amet. Qui consectetur deserunt deserunt Lorem sunt magna. Voluptate ad irure eiusmod cillum reprehenderit adipisicing aliqua occaecat qui est amet ullamco pariatur.</p><br /><img src=\"https://placeimg.com/440/480/animals\" alt=\"From placeimg\"/><br /><p>Eu aliquip officia fugiat sunt velit ad. Exercitation do et velit anim magna est. Laboris amet anim consequat tempor exercitation occaecat anim aliqua duis laborum est ex.\n\nLaboris esse ipsum do cillum reprehenderit quis duis. Sint elit esse aliquip aute ullamco pariatur esse laborum ad consectetur cillum veniam magna enim. Do occaecat sit adipisicing ullamco duis amet veniam minim aliquip excepteur ullamco id in.</p>",
+      "id" : 1,
+      "image" : {
+        "alt" : "From placeimg",
+        "src" : "https://placeimg.com/440/480/animals"
+      },
+      "order" : 2,
+      "rando" : 11526,
+      "style" : {
+        "background" : "#D0FEF5",
+        "color" : "#191D32"
+      },
+      "tags" : [ "do", "culpa", "nulla", "ex", "irure" ],
+      "text" : "Qui laboris exercitation nulla ut duis amet eiusmod. Proident laboris culpa aliqua quis non dolore laborum labore ipsum nulla. Excepteur veniam sunt duis culpa anim incididunt esse ad ea ex irure esse Lorem est.",
+      "title" : "PORTALIS"
+    },
+    "-Slides04" : {
+      "html" : "<h3>Xsports</h3><p><strong>Esse cillum minim aute anim eu.</strong> Aliqua anim ad adipisicing cillum est ullamco dolor nostrud do ullamco Lorem exercitation est elit. Ullamco nostrud cupidatat aliqua et aliqua reprehenderit id eiusmod aliquip ex. Quis do aute amet mollit voluptate deserunt enim non reprehenderit dolor. Culpa reprehenderit tempor ipsum magna ex in magna elit aliquip ipsum voluptate aliquip. Minim sint aliqua sint ex Lorem qui irure.</p><br /><img src=\"https://placeimg.com/420/360/tech\" alt=\"From placeimg\"/><br /><p>Consequat Lorem consequat Lorem qui cupidatat. Eu enim ipsum Lorem et. Ullamco adipisicing amet enim duis voluptate cupidatat aute pariatur anim. Exercitation sit magna ipsum dolore id mollit deserunt adipisicing veniam voluptate. Dolore veniam voluptate labore consequat exercitation nisi id laborum id eiusmod. Tempor qui ullamco ipsum officia aliqua elit minim dolor labore.\n\nEsse proident et ut dolor non qui magna deserunt aute pariatur. Cillum est id proident enim irure irure do est magna. Laboris occaecat quis est incididunt ut magna do voluptate magna non id excepteur commodo fugiat. Pariatur do minim ut aute sint magna id magna et voluptate proident.</p>",
+      "id" : 3,
+      "image" : {
+        "alt" : "From placeimg",
+        "src" : "https://placeimg.com/420/360/tech"
+      },
+      "order" : 1,
+      "rando" : 7408,
+      "style" : {
+        "background" : "#9FD8CB",
+        "color" : "#2D3319"
+      },
+      "tags" : [ "est", "consectetur", "cillum", "eu", "ea" ],
+      "text" : "Ad fugiat commodo ea mollit. Excepteur amet labore ea nisi enim ullamco consectetur dolor amet commodo non adipisicing Lorem pariatur. Exercitation qui sunt ipsum laborum ut eu pariatur quis nulla duis tempor.",
+      "title" : "PROFLEX"
+    },
+    "-Slides05" : {
+      "html" : "<h3>Dadabase</h3><p><strong>In quis laboris eiusmod sit.</strong> Ut occaecat deserunt incididunt do elit officia nisi. Enim magna aliquip mollit excepteur officia. Incididunt pariatur irure excepteur amet ipsum irure est nisi in proident nisi consectetur.</p><br /><img src=\"https://placeimg.com/360/250/nature\" alt=\"From placeimg\"/><br /><p>Ipsum qui ullamco culpa eu fugiat voluptate incididunt ea consectetur ex. Et nisi eiusmod amet quis minim incididunt amet magna. Non deserunt pariatur cillum eiusmod elit aliquip in ullamco exercitation deserunt qui irure nisi magna. Culpa esse veniam laborum anim. Reprehenderit ex consectetur consectetur minim eiusmod labore aliqua tempor aliqua in voluptate deserunt amet nisi.\n\nVelit amet esse consequat do amet quis do sint eiusmod est reprehenderit fugiat. Consequat ut deserunt ad nulla amet ex veniam quis ex do consectetur consequat. Sunt fugiat do aliquip aliquip Lorem id culpa aute ut aliqua fugiat exercitation. Ad pariatur in tempor tempor et ea quis adipisicing Lorem adipisicing amet qui occaecat in. Quis culpa irure sit sunt laboris magna commodo cupidatat nulla incididunt sit. Exercitation officia sit velit culpa nisi aliquip. Laborum sint qui commodo cillum mollit duis excepteur ea nulla.</p>",
+      "id" : 4,
+      "image" : {
+        "alt" : "From placeimg",
+        "src" : "https://placeimg.com/360/250/nature"
+      },
+      "order" : 1,
+      "rando" : 13076,
+      "style" : {
+        "background" : "#4A8FE7",
+        "color" : "#131515"
+      },
+      "tags" : [ "magna", "ex", "voluptate", "aliqua", "do" ],
+      "text" : "Nostrud eu excepteur aute ut eu magna. Elit aliquip voluptate elit excepteur magna. Adipisicing eu deserunt laboris velit Lorem dolor duis sint aliquip consectetur in laborum sint.",
+      "title" : "AQUOAVO"
+    },
+    "-Slides06" : {
+      "html" : "<h3>Cogentry</h3><p><strong>Ex reprehenderit dolor labore ullamco labore in proident dolor culpa excepteur incididunt nulla sit.</strong> Tempor nostrud dolore exercitation ex velit nulla. Eiusmod cupidatat cupidatat minim tempor occaecat nisi deserunt nulla. Fugiat veniam do mollit adipisicing consectetur velit cupidatat fugiat.</p><br /><img src=\"https://placeimg.com/480/300/people\" alt=\"From placeimg\"/><br /><p>Eiusmod fugiat cupidatat proident incididunt magna. Duis ea minim ut in deserunt elit qui adipisicing fugiat tempor excepteur. Velit ex laborum et sit ipsum ad et aliquip. Consectetur irure sit cupidatat occaecat sint. Incididunt pariatur et aute consequat eu Lorem officia aliquip anim sit eiusmod qui. Deserunt ad incididunt Lorem nulla elit commodo.\n\nUllamco Lorem est consequat enim velit reprehenderit proident Lorem veniam Lorem dolore nostrud. Aliqua magna consectetur eiusmod elit deserunt incididunt dolor. Aliqua aute Lorem veniam laboris esse esse eiusmod qui laborum esse sint. Duis aliquip ut voluptate cupidatat ipsum. Adipisicing nostrud dolore occaecat in ullamco tempor velit. Sint dolore ad exercitation eiusmod deserunt sunt velit anim nostrud ad tempor veniam aliqua.</p>",
+      "id" : 3,
+      "image" : {
+        "alt" : "From placeimg",
+        "src" : "https://placeimg.com/480/300/people"
+      },
+      "order" : 0,
+      "rando" : 3117,
+      "style" : {
+        "background" : "#EEF5DB",
+        "color" : "#FE5F55"
+      },
+      "tags" : [ "qui", "Lorem", "nulla", "ut", "ea" ],
+      "text" : "Irure nulla consequat consectetur nostrud sunt aliquip et tempor. Mollit magna in nulla aliqua ea tempor nostrud sit amet dolore. Nisi anim nostrud in est qui nisi commodo eu.",
+      "title" : "GEEKNET"
+    }
+  }
+}

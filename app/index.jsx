@@ -9,6 +9,20 @@ import mainReducer from './data/reducers'
 import middleware from './utils/action-history-middleware'
 import slides from './data/slides'
 import { getOrElse, toMaybe } from 'utils/maybe'
+import firebase from 'firebase/app'
+import 'firebase/database'
+import config from '../firebase.config'
+
+firebase.initializeApp(config)
+const database = firebase.database()
+
+database.ref('slides')
+  //.set(require('../demo-firebase-slides.json').slides)
+  .on('child_changed', fbSlides => {
+    if (fbSlides.hasChildren()) {
+      fbSlides.forEach(slide => console.log(slide.val()))
+    }
+  })
 
 // initialState :: Object
 const initialState = {

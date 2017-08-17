@@ -105,6 +105,10 @@ module.exports = {
   // as if it was actually Either.
   of: Either.of,
   toEither: Either.toEither,
-  encase: Either.encase,
+  encaseEither(leftVal, rightFn) {
+    return (...args) => {
+      return Either.encase(leftVal, rightFn.bind(null, ...args))
+    }
+  }
 }
 
