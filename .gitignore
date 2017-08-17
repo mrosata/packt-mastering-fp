@@ -6,6 +6,7 @@ build/*
 !build/index.html
 !build/favicon.ico
 !build/img
+# Add Firebase config to ignore list
 firebase.config.*
 
 # IDE and texteditor configs

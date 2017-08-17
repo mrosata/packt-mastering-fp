@@ -14,15 +14,7 @@ import 'firebase/database'
 import config from '../firebase.config'
 
 firebase.initializeApp(config)
-const database = firebase.database()
 
-database.ref('slides')
-  //.set(require('../demo-firebase-slides.json').slides)
-  .on('child_changed', fbSlides => {
-    if (fbSlides.hasChildren()) {
-      fbSlides.forEach(slide => console.log(slide.val()))
-    }
-  })
 
 // initialState :: Object
 const initialState = {
