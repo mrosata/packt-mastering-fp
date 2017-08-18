@@ -23,7 +23,9 @@ const initialState = {
     slides: [],
     slidePos: [0, 0],
   },
-  settings: {},
+  settings: {
+    fullscreen: true,
+  },
 }
 
 const {
@@ -60,7 +62,6 @@ const fromLocalStore = R.compose(toMaybe, JSON.parse, getItem)
 
 dispatch({ type: 'CUSTOM_TITLE', value: 'Packt Presentation App' })
 dispatch({ type: 'SETUP_SLIDES', value: getOrElse(slides, fromLocalStore('slides')) })
-
 
 
 
