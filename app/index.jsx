@@ -6,15 +6,9 @@ import { createStore } from './data/redux-ish'
 import Slideshow from './components/Slideshow'
 import Controls from './components/Controls'
 import mainReducer from './data/reducers'
-import middleware from './utils/action-history-middleware'
+import middleware from './utils/firebase-middleware'
 import slides from './data/slides'
 import { getOrElse, toMaybe } from 'utils/maybe'
-import firebase from 'firebase/app'
-import 'firebase/database'
-import config from '../firebase.config'
-
-firebase.initializeApp(config)
-
 
 // initialState :: Object
 const initialState = {
@@ -35,7 +29,7 @@ const {
 
 const update = renderDOM((state) => {
   const {
-    title,
+    title = '',
     presentation: {
       slides, slidePos,
     },
@@ -62,10 +56,5 @@ const fromLocalStore = R.compose(toMaybe, JSON.parse, getItem)
 
 dispatch({ type: 'CUSTOM_TITLE', value: 'Packt Presentation App' })
 dispatch({ type: 'SETUP_SLIDES', value: getOrElse(slides, fromLocalStore('slides')) })
-
-
-
-
-
 
 

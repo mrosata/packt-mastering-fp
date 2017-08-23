@@ -2,7 +2,14 @@ import R from 'ramda'
 import compose from 'utils/compose'
 import { activeSlide, setupSlides } from 'utils/slide-utils'
 
-const { mergeDeepRight, apply } = R
+const { mergeDeepRight, apply, o, map, assoc, toPairs, pathOr, pipe, __ } = R
+
+// keyedObjToArray :: { key: value } -> [Obj]
+const keyedObjToArray = o(
+  map(([key, obj]) => assoc('key', key, obj)),
+  toPairs
+)
+
 // mainReducer :: (Object, Object) -> Object
 function mainReducer (state, action = {}) {
   const { type, value, error } = action
@@ -58,6 +65,24 @@ function mainReducer (state, action = {}) {
         state,
         { presentation: { slides: value, slidePos: [0, 0], loading: false } }
       )
+
+    case 'SETUP_FB_SLIDES_START':
+      return mergeDeepRight(state, { title: 'Firebase Slides', presentation: { slidePos: [0, 0] } })
+    
+    case 'SETUP_FB_SLIDES_NEXT':
+
+      const theSlides = R.pipe(
+        keyedObjToArray,
+        assoc('slides', __, {}),
+        setupSlides,
+        activeSlide(state.presentation.slidePos || [])
+      )(value)
+      
+      return mergeDeepRight(
+        state,
+        { presentation: { slides: theSlides, slidePos: [0, 0], loading: false } }
+      )
+
 
     default:
       // We don't know how to handle this action

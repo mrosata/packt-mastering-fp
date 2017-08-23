@@ -104,10 +104,20 @@ export default (props) => {
         </button>)
       }
 
+       <button
+          onclick={ () => dispatch({ type: 'SETUP_FB_SLIDES', firebase: { ref: 'slides', method: 'value' } }) }
+          className='btn btn-md btn-success'
+          type='button'
+        >
+          <i className="fa fa-database"></i>
+          <span className="hidden">Firebase</span>
+      </button>
+        
       <RemoteSlidesBtn
         className='btn btn-md btn-success'
         dispatch={ dispatch }
         disabled={ loading }
+        prefetch={ { type: 'SETUP_FB_SLIDES', firebase: { ref: 'slides', method: 'value', cancel: true } } }
       >
         <i className='fa fa-feed' />  
       </RemoteSlidesBtn>

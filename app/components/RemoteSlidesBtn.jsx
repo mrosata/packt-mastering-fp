@@ -16,8 +16,9 @@ function fetchSlides() {
   })
 }
 
-function loadRemoteSlides(dispatch) {
+function loadRemoteSlides(dispatch, prefetch) {
   return () => {
+    R.has('type', prefetch) && dispatch(prefetch)
     dispatch({ type: 'REMOTE_SLIDES_START' })
     fetchSlides()
       .map(slides => ({ slides }))
@@ -30,12 +31,12 @@ function loadRemoteSlides(dispatch) {
   }
 }
 
-export default ({ dispatch, className, loading }, children) => {
+export default ({ dispatch, className, loading, prefetch }, children) => {
 
   return (
     <button
       className={ className }
-      onclick={ loadRemoteSlides(dispatch) }
+      onclick={ loadRemoteSlides(dispatch, prefetch) }
       disabled={ loading }
     >
       { children }
