@@ -1,6 +1,6 @@
 {
   "name": "packtpub-mastering-fp",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Course project for Mastering Functional JavaScript, a Packt Pub Learning Path ",
   "main": "index.js",
   "author": "Michael Rosata <michael.rosata@gmail.com>",
@@ -11,7 +11,8 @@
     "watch": "webpack --progress --colors --watch",
     "help": "webpack --help --color",
     "bower": "bower",
-    "nodemon": "nodemon"
+    "nodemon": "nodemon",
+    "test": "NODE_PATH=app _mocha --colors --require test/helpers/setup.js  $(find test -name '*.Spec.js' -path 'test/*') --watch"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
@@ -19,6 +20,8 @@
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-exponentiation-operator": "^6.22.0",
     "babel-plugin-transform-react-jsx": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.22.0",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
