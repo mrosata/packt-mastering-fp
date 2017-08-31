@@ -1,12 +1,16 @@
 ## Mastering Functional Programming With JavaScript
 ##### PacktPub and Michael Rosata
 
-The code in this repo is used in the video courses created by Packt Publishing: ***"Mastering Functional Programming with JavaScript"*** and ***"Declarative Apps using Functional JavaScript"***. Both courses are independant, but build into one final app and so there are different branches for both courses repo.
+The code in this repo is used in the video courses created by Packt Publishing: ***"Mastering Functional Programming with JavaScript"*** (all courses are independant, but build into one final app and so there are different branches for all three).  You are currently looking at the ___master branch___ right now. The directions below should apply to you regardless which course you purchansed. However, for the best experience, go-to the branch for the course you purchased:
 
-**Please make sure to use the correct branch for your course**. The first course "Mastering Functional Programming with JavaScript" is on the branch `volume-one`
+1. __Learn to Write Functional JavaScript__ [volume-one](https://github.com/mrosata/packt-mastering-fp/tree/volume-one)
+2.  __Build Declarative Apps using Functional JavaScript__ [volume-two](https://github.com/mrosata/packt-mastering-fp/tree/volume-two)
+3. __Mastering App Concerns with Functional JavaScript__ [volume-three](https://github.com/mrosata/packt-mastering-fp/tree/volume-three)
 
+On the command line you may easily switch between different volumes
 ```bash
 git checkout volume-one
+git pull
 ```
 
 The *second volume* "Declarative Apps using Functional Javascript", is on branch `volume-two`
@@ -67,6 +71,7 @@ npm run serve
 
 #### Additional Information
 
+Please see the [wiki](https://github.com/mrosata/packt-mastering-fp/wiki) for additional info, including changes that may be on the way.
 
 The dev server should live reload in the browser anytime you make changes to a file in the "app" directory. Any changes you make to the HTML `build/index.html` file won't trigger a reload, but you shouldn't need to touch that. The main entry file for the project is `app/entry.js`, but rather than working in that file, try to think of `app/index.js` as your "main" file
 
